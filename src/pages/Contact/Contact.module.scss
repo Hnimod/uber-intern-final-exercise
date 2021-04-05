@@ -1,0 +1,56 @@
+.form {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+  max-width: 60rem;
+
+  @media screen and (min-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: grey;
+
+  & svg {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+.detail {
+  margin: 1rem 0;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.info {
+  & > * {
+    margin-bottom: 1rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-right: 2rem;
+    flex-basis: 50%;
+  }
+}
+
+.message {
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    flex-basis: 50%;
+  }
+}

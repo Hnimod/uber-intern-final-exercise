@@ -1,0 +1,93 @@
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.gender {
+  padding: 0.8rem 1rem;
+  display: flex;
+
+  & img {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+.genderHead {
+  padding: 0.8rem 1rem;
+  color: grey;
+}
+
+.maleRadio {
+  margin-right: 1rem;
+  & > input {
+    display: none;
+  }
+}
+
+.femaleRadio {
+  & > input {
+    display: none;
+  }
+}
+
+.nameInput {
+  & > input {
+    border: none;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(white, 0);
+    font: inherit;
+    flex: 1;
+    margin: 1rem 0;
+    min-width: 10rem;
+    padding: 0.8rem 1rem;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.title {
+  color: grey;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.imagePreview {
+  background-image: linear-gradient(rgba(white, 0.9), rgba(white, 0.9)),
+    url('../../../../images/male-icon.png');
+  background-size: cover;
+  margin-right: 1rem;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > img {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+}
+
+.upload {
+  align-items: center;
+  display: flex;
+  padding: 0.8rem 1rem;
+}
+
+.error {
+  & > input {
+    border: 1px solid #ff3333 !important;
+  }
+}
+
+.choseGender {
+  & > img {
+    border-radius: 50%;
+    border: 5px solid green;
+  }
+}
