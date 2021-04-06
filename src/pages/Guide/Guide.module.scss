@@ -8,29 +8,18 @@
 }
 
 .content {
-  display: flex;
   margin-top: 3rem;
-
-  @media screen and (max-width: 767.98px) {
-    flex-direction: column;
-  }
 }
 
-.description {
-  max-width: 30rem;
-  margin-right: 10rem;
+.introduction {
+  margin-bottom: 5rem;
   line-height: 30px;
   font-weight: 600;
-
-  @media screen and (max-width: 767.98px) {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
 }
 
-.guide {
+.steps {
   & > h3:not(:first-child) {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
   }
 
   & > p {
@@ -38,5 +27,21 @@
     word-spacing: 3px;
     line-height: 30px;
     color: rgb(88, 88, 88);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .introduction {
+    flex-basis: 40%;
+    max-width: 30rem;
+  }
+
+  .steps {
+    flex-basis: 50%;
   }
 }

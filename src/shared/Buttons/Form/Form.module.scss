@@ -1,20 +1,30 @@
 .formButton {
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
-  font-size: 2rem;
+  font-size: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
+  background-color: rgb(139, 139, 139);
 
   &:hover {
-    background-color: rgb(131, 131, 131);
+    background-color: rgb(202, 202, 202);
   }
 
   &:focus {
     outline: none;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: white;
+  }
+
+  // & > div {
+  //   padding: 2rem;
+  // }
 }

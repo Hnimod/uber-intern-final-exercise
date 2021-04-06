@@ -1,6 +1,4 @@
-.container {
-  width: 100%;
-  height: 100%;
+.input {
   display: flex;
   flex-direction: column;
 
@@ -15,20 +13,32 @@
     align-self: flex-start;
 
     @media screen and (min-width: 360px) {
+      align-self: stretch;
+      padding: auto;
       flex-basis: 8rem;
     }
   }
 
-  & > textarea {
+  & > input {
     border: none;
     font: inherit;
+    padding: 0.8rem 1rem;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
     flex: 1;
-    padding: 0.8rem 1rem;
     width: 100%;
 
     &:focus {
       outline: none;
     }
+  }
+}
+
+.error {
+  & > label {
+    color: #ff3333;
+  }
+
+  & > input {
+    border: 1px solid #ff3333;
   }
 }

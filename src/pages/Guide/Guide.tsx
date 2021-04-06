@@ -8,13 +8,13 @@ const Guide = () => {
       <div className={styles.overlay}>
         <h1 className={styles.title}>How Uber works</h1>
         <section className={styles.content}>
-          <p className={styles.description}>
+          <p className={styles.introduction}>
             On-demand transportation technology is our core service, and the app
             that connects drivers-partners and riders is what makes it all
             possible. Here's how it works, step by step:
           </p>
 
-          <section className={styles.guide}>
+          <section className={styles.steps}>
             <h3>Step 1: A rider opens the app</h3>
             <p>
               The rider enters their destination into the Where to? box on the
