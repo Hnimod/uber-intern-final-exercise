@@ -23,10 +23,10 @@ const PhoneNumberStep = ({ formModel }: Props) => {
           >
             <label htmlFor={phoneNumber.name}>+84</label>
             <input
+              {...field}
               id={phoneNumber.name}
               placeholder={phoneNumber.placeholder}
               autoComplete="off"
-              {...field}
             />
           </div>
         )}
@@ -38,13 +38,13 @@ const PhoneNumberStep = ({ formModel }: Props) => {
               !!meta.error && meta.touched && styles.errorAgree
             }`}
           >
-            <input id={agree.name} type="checkbox" {...field} />
+            <input {...field} id={agree.name} type="checkbox" />
             <label htmlFor={agree.name}>{agree.label}</label>
           </div>
         )}
       </Field>
       <div className={styles.button}>
-        <FormButton />
+        <FormButton submit />
       </div>
     </>
   );

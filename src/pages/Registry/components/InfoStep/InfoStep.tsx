@@ -38,9 +38,8 @@ const Info = ({ formModel }: Props) => {
       <p className={styles.genderHead}>Select gender</p>
       <div className={styles.gender}>
         <Field name={gender.name}>
-          {({ field, meta, form }: FieldProps) => (
+          {({ field }: FieldProps) => (
             <>
-              {console.log(field, meta, form)}
               <div className={styles.maleRadio}>
                 <label
                   htmlFor="male"
@@ -82,7 +81,7 @@ const Info = ({ formModel }: Props) => {
         <p>Upload profile picture</p>
       </div>
       <div className={styles.button}>
-        <FormButton />
+        <FormButton submit />
       </div>
     </>
   );

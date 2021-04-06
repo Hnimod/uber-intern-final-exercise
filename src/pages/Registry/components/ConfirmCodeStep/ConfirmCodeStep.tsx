@@ -57,7 +57,7 @@ const ConfirmCodeStep = ({ formModel }: Props) => {
         <a href="/#" target="_blank">
           I didn't receive code?
         </a>
-        <FormButton />
+        <FormButton submit />
       </div>
     </>
   );

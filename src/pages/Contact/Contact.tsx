@@ -38,7 +38,7 @@ const Contact = () => {
           }, 2000);
         }}
       >
-        {({ isSubmitting, isValid }: FormikProps<IContact>) => (
+        {({ isSubmitting, isValid, dirty }: FormikProps<IContact>) => (
           <Form className={styles.form}>
             <div className={styles.title}>
               <IoMailSharp />
@@ -66,7 +66,11 @@ const Contact = () => {
               </div>
             </div>
             <div className={styles.button}>
-              <FormButton isSpinning={isSubmitting} disabled={!isValid} />
+              <FormButton
+                isSpinning={isSubmitting}
+                disabled={!(isValid && dirty)}
+                submit
+              />
             </div>
           </Form>
         )}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Formik, Form, FormikHelpers } from 'formik';
 
 import ConfirmCodeStep from './components/ConfirmCodeStep';
@@ -35,7 +36,7 @@ const Registry = () => {
       case 2:
         return <InfoStep formModel={registryFormModel} />;
       default:
-        return <div>Step not found!</div>;
+        return <Redirect to="/registry" />;
     }
   };
 
@@ -63,6 +64,7 @@ const Registry = () => {
       submitForm(values, actions);
     } else {
       setActiveStep((currStep) => currStep + 1);
+      actions.setTouched({});
       actions.setSubmitting(false);
     }
   };

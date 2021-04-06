@@ -9,9 +9,15 @@ type Props = {
   className?: string;
   isSpinning?: boolean;
   disabled?: boolean;
+  submit?: boolean;
 };
 
-const FormButton = ({ className, disabled, isSpinning = false }: Props) => {
+const FormButton = ({
+  className,
+  disabled,
+  isSpinning = false,
+  submit,
+}: Props) => {
   const [spinnner, setSpinner] = useState(false);
 
   useEffect(() => {
@@ -21,7 +27,7 @@ const FormButton = ({ className, disabled, isSpinning = false }: Props) => {
   return (
     <button
       className={styles.formButton + ' ' + className}
-      type="submit"
+      type={submit ? 'submit' : 'button'}
       disabled={disabled || spinnner}
     >
       {spinnner ? <Spinner /> : <HiOutlineArrowRight />}
