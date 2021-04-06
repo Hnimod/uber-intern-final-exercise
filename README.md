@@ -1,1 +1,1 @@
-# PYCO ReactJS Intern Exercise
+# ReactJS Intern Final Exercise
