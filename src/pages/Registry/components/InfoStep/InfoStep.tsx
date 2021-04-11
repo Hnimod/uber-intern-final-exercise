@@ -1,4 +1,4 @@
-import { Field, FieldProps } from 'formik';
+import { useField } from 'formik';
 
 import { FormModel } from '../../models/registryFormModel';
 import { FormButton } from '../../../../shared/Buttons';
@@ -14,66 +14,59 @@ type Props = {
 
 const Info = ({ formModel }: Props) => {
   const { fullName, gender } = formModel;
+  const [nameField, nameMeta] = useField(fullName.name);
+  const [genderField] = useField(gender.name);
 
   return (
     <>
       <h1 className={styles.title}>Enter your info</h1>
-      <Field name={fullName.name}>
-        {({ field, meta }: FieldProps) => (
-          <div
-            className={`${styles.nameInput} ${
-              meta.error && meta.touched ? styles.error : ''
-            }`}
-          >
-            <input
-              {...field}
-              id={fullName.name}
-              placeholder={fullName.placeholder}
-              autoComplete="off"
-            />
-          </div>
-        )}
-      </Field>
+      <div
+        className={`${styles.nameInput} ${
+          nameMeta.error && nameMeta.touched ? styles.error : ''
+        }`}
+      >
+        <input
+          {...nameField}
+          id={fullName.name}
+          placeholder={fullName.placeholder}
+          autoComplete="off"
+        />
+      </div>
 
       <p className={styles.genderHead}>Select gender</p>
       <div className={styles.gender}>
-        <Field name={gender.name}>
-          {({ field }: FieldProps) => (
-            <>
-              <div className={styles.maleRadio}>
-                <label
-                  htmlFor="male"
-                  className={field.value === 'male' ? styles.choseGender : ''}
-                >
-                  <img src={MaleIcon} alt="male icon" />
-                </label>
-                <input
-                  {...field}
-                  type="radio"
-                  id="male"
-                  value="male"
-                  checked={field.value === 'male'}
-                />
-              </div>
-              <div className={styles.femaleRadio}>
-                <label
-                  htmlFor="female"
-                  className={field.value === 'male' ? '' : styles.choseGender}
-                >
-                  <img src={FemaleIcon} alt="female icon" />
-                </label>
-                <input
-                  {...field}
-                  type="radio"
-                  id="female"
-                  value="female"
-                  checked={field.value === 'female'}
-                />
-              </div>
-            </>
-          )}
-        </Field>
+        <div className={styles.maleRadio}>
+          <label
+            htmlFor="male"
+            className={genderField.value === 'male' ? styles.choseGender : ''}
+          >
+            <img src={MaleIcon} alt="male icon" />
+          </label>
+          <input
+            {...genderField}
+            type="radio"
+            id="male"
+            value="male"
+            checked={genderField.value === 'male'}
+          />
+        </div>
+        <div className={styles.femaleRadio}>
+          <label
+            htmlFor="female"
+            className={genderField.value === 'male' ? '' : styles.choseGender}
+          >
+            <img src={FemaleIcon} alt="female icon" />
+          </label>
+          <input
+            {...genderField}
+            type="radio"
+            id="female"
+            value="female"
+            checked={genderField.value === 'female'}
+          />
+        </div>
       </div>
+
       <div className={styles.upload}>
         <div className={styles.imagePreview}>
           <img src={CameraIcon} alt="camera icon" />
@@ -81,7 +74,7 @@ const Info = ({ formModel }: Props) => {
         <p>Upload profile picture</p>
       </div>
       <div className={styles.button}>
-        <FormButton submit />
+        <FormButton />
       </div>
     </>
   );

@@ -14,22 +14,17 @@ const {
 
 const registryFormValidation = [
   Yup.object().shape({
-    [phoneNumber.name]: Yup.string().required(),
+    [phoneNumber.name]: Yup.string()
+      .required('Please enter your phone number')
+      .min(9, 'At least 9 digits')
+      .max(10, 'Maximum 10 digits'),
     [agree.name]: Yup.boolean().oneOf([true]),
   }),
   Yup.object().shape({
-    [code1.name]: Yup.string()
-      .required()
-      .matches(/^[0-9]$/, 'number only'),
-    [code2.name]: Yup.string()
-      .required()
-      .matches(/^[0-9]$/, 'number only'),
-    [code3.name]: Yup.string()
-      .required()
-      .matches(/^[0-9]$/, 'number only'),
-    [code4.name]: Yup.string()
-      .required()
-      .matches(/^[0-9]$/, 'number only'),
+    [code1.name]: Yup.string().required(),
+    [code2.name]: Yup.string().required(),
+    [code3.name]: Yup.string().required(),
+    [code4.name]: Yup.string().required(),
   }),
   Yup.object().shape({
     [fullName.name]: Yup.string().required(),

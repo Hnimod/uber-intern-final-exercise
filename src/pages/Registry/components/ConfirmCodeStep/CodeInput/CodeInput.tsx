@@ -1,5 +1,5 @@
-import { RefObject } from 'react';
-import { Field, FieldProps } from 'formik';
+import { RefObject, ChangeEvent } from 'react';
+import { useField } from 'formik';
 
 import styles from './CodeInput.module.scss';
 
@@ -10,27 +10,32 @@ type Props = {
 };
 
 const CodeInput = ({ name, refInput, onInputChange }: Props) => {
+  const [field, meta, helpers] = useField(name);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    const valid = field.value.length <= 1 && value.match(/^(\s*|\d+)$/);
+    if (valid) {
+      helpers.setValue(value);
+      onInputChange?.();
+    }
+  };
+
   return (
-    <Field name={name}>
-      {({ field, meta, form }: FieldProps) => (
-        <input
-          {...field}
-          className={!!meta.error && meta.touched ? styles.error : ''}
-          type="text"
-          maxLength={1}
-          id={name}
-          ref={refInput}
-          onChange={(e) => {
-            if (e.target.value.match(/^[0-9]$/)) {
-              form.setFieldValue(name, e.target.value);
-              onInputChange?.();
-              return;
-            }
-            form.setFieldValue(name, '');
-          }}
-        />
-      )}
-    </Field>
+    <input
+      {...field}
+      className={!!meta.error && meta.touched ? styles.error : ''}
+      type="number"
+      id={name}
+      ref={refInput}
+      onChange={(e) => handleInputChange(e)}
+      onBlur={() => helpers.setTouched(false)}
+      onFocus={(e) => {
+        helpers.setValue('');
+        e.target.value = '';
+      }}
+    />
   );
 };
 

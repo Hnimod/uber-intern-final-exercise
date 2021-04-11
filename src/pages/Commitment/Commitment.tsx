@@ -9,7 +9,7 @@ const Commitment = () => {
         <h1 className={styles.title}>
           At Uber we care about you <br></br>& the trust you give use
         </h1>
-        <div className={styles.content}>
+        <section className={styles.content}>
           <p className={styles.description}>
             Uber puts transportation at your fingertips. Understanding how and
             why we use your information should be just as easy. Our Privacy
@@ -40,7 +40,7 @@ const Commitment = () => {
               calendar, personalize your app, and even delete you account
             </p>
           </div>
-        </div>
+        </section>
       </div>
     </BackgroundImage>
   );

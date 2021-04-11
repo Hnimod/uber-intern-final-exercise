@@ -66,11 +66,7 @@ const Contact = () => {
               </div>
             </div>
             <div className={styles.button}>
-              <FormButton
-                isSpinning={isSubmitting}
-                disabled={!(isValid && dirty)}
-                submit
-              />
+              <FormButton />
             </div>
           </Form>
         )}

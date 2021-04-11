@@ -1,5 +1,6 @@
-import { Field, FieldProps } from 'formik';
+import { ErrorMessage, useField } from 'formik';
 
+import ErrorText from '../ErrorText';
 import { FormModel } from '../../models/registryFormModel';
 import { FormButton } from '../../../../shared/Buttons';
 
@@ -11,40 +12,49 @@ type Props = {
 
 const PhoneNumberStep = ({ formModel }: Props) => {
   const { phoneNumber, agree } = formModel;
+  const [phoneField, phoneMeta, phoneHelpers] = useField(phoneNumber.name);
+  const [agreeField, agreeMeta] = useField(agree.name);
+
   return (
     <>
       <h1 className={styles.title}>Get moving with Uber</h1>
-      <Field name={phoneNumber.name}>
-        {({ field, meta }: FieldProps) => (
-          <div
-            className={`${styles.input} ${
-              !!meta.error && meta.touched && styles.errorPhone
-            }`}
-          >
-            <label htmlFor={phoneNumber.name}>+84</label>
-            <input
-              {...field}
-              id={phoneNumber.name}
-              placeholder={phoneNumber.placeholder}
-              autoComplete="off"
-            />
-          </div>
+      <div
+        className={`${styles.input} ${
+          !!phoneMeta.error && phoneMeta.touched && styles.errorPhone
+        }`}
+      >
+        <label htmlFor={phoneNumber.name}>+84</label>
+        <input
+          {...phoneField}
+          id={phoneNumber.name}
+          placeholder={phoneNumber.placeholder}
+          autoComplete="off"
+          onChange={(e) => {
+            if (e.target.value.match(/^(\s*|\d+)$/)) {
+              phoneHelpers.setValue(e.target.value);
+              return;
+            }
+          }}
+        />
+      </div>
+      <ErrorMessage
+        name={phoneNumber.name}
+        render={(message) => (
+          <ErrorText message={message} className={styles.errorPhoneText} />
         )}
-      </Field>
-      <Field name={agree.name}>
-        {({ field, meta }: FieldProps) => (
-          <div
-            className={`${styles.checkBox} ${
-              !!meta.error && meta.touched && styles.errorAgree
-            }`}
-          >
-            <input {...field} id={agree.name} type="checkbox" />
-            <label htmlFor={agree.name}>{agree.label}</label>
-          </div>
-        )}
-      </Field>
+      />
+
+      <div
+        className={`${styles.checkBox} ${
+          !!agreeMeta.error && agreeMeta.touched && styles.errorAgree
+        }`}
+      >
+        <input {...agreeField} id={agree.name} type="checkbox" />
+        <label htmlFor={agree.name}>{agree.label}</label>
+      </div>
+
       <div className={styles.button}>
-        <FormButton submit />
+        <FormButton />
       </div>
     </>
   );

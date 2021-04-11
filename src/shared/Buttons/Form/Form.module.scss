@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
+  border: 3px solid transparent;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
   background-color: rgb(139, 139, 139);
@@ -17,14 +17,11 @@
 
   &:focus {
     outline: none;
+    border: 3px solid black;
   }
 
   &:disabled {
     cursor: not-allowed;
     background-color: white;
   }
-
-  // & > div {
-  //   padding: 2rem;
-  // }
 }

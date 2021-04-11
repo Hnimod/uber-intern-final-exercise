@@ -8,15 +8,21 @@ const Footer = () => {
   return (
     <footer>
       <div className={styles.container}>
-        <section className={styles.copyright}>
+        <div className={styles.copyright}>
           <p>© 2019 Uber Technologies Inc. All Rights Reserved.</p>
-          <div className={styles.policies}>
-            <a href="/">Terms of Use</a>
-            <a href="/">Legal Notices</a>
-            <a href="/">Privacy & Security</a>
-          </div>
-        </section>
-        <section className={styles.socialMedia}>
+          <ul className={styles.policies}>
+            <li>
+              <a href="/">Terms of Use</a>
+            </li>
+            <li>
+              <a href="/">Legal Notices</a>
+            </li>
+            <li>
+              <a href="/">Privacy & Security</a>
+            </li>
+          </ul>
+        </div>
+        <div className={styles.socialMedia}>
           <a href="/">
             <img src={facebookSvg} alt="Facebook" />
           </a>
@@ -26,7 +32,7 @@ const Footer = () => {
           <a href="/">
             <img src={youtubeSvg} alt="Youtube" />
           </a>
-        </section>
+        </div>
       </div>
     </footer>
   );

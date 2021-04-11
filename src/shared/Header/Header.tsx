@@ -27,13 +27,13 @@ const Header = () => {
             alt="uber-logo-text"
           />
         </Link>
-        <section className={styles.sideMenu}>
+        <div className={styles.sideMenu}>
           <div className={styles.menuButton} onClick={toggleSideMenu}>
             {sideMenuOpen ? <MdClose /> : <ImMenu />}
           </div>
 
           {sideMenuOpen && <Sidebar />}
-        </section>
+        </div>
       </div>
     </header>
   );

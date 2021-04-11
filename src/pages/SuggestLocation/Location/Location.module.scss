@@ -1,0 +1,19 @@
+.location {
+  display: flex;
+
+  & h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  & address {
+    font-style: normal;
+    color: grey;
+  }
+
+  & svg {
+    align-self: center;
+    margin-right: 2rem;
+    font-size: 2.2rem;
+  }
+}

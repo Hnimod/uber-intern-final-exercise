@@ -1,20 +1,15 @@
 import './Spinner.css';
 
-const Spinner = () => {
+interface Props {
+  asOverlay?: boolean;
+}
+
+const Spinner = ({ asOverlay }: Props) => {
   return (
-    <div className="lds-spinner">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div
+      className={`loading-spinner ${asOverlay && 'loading-spinner__overlay'}`}
+    >
+      <div className="lds-dual-ring"></div>
     </div>
   );
 };
