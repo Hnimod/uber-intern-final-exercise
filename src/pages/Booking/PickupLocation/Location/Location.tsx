@@ -1,4 +1,5 @@
 import { useMap } from 'react-leaflet';
+import { LatLngExpression } from 'leaflet';
 import { MdLocationOn } from 'react-icons/md';
 import styles from './Location.module.scss';
 
@@ -22,6 +23,8 @@ const Location = ({ name, address, coordinate, current }: Props) => {
   const onLocationClick = () => {
     if (!current) {
       dispatch(changePickupMarker(coordinate));
+      const mapPosition: LatLngExpression = [coordinate.lat, coordinate.lng];
+      map.flyTo(mapPosition).getZoom();
     } else {
       map.locate();
       map.addEventListener('locationfound', (e) => {
@@ -30,6 +33,7 @@ const Location = ({ name, address, coordinate, current }: Props) => {
           lng: e.latlng.lng,
         };
         dispatch(changePickupMarker(newCoordinate));
+        map.flyTo(e.latlng).getZoom();
       });
       map.addEventListener('locationerror', () => {
         alert('Unable to find your location');

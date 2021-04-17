@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useMap } from 'react-leaflet';
+import { LatLngExpression } from 'leaflet';
 import styles from './InputSuggestions.module.scss';
 
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
@@ -23,6 +25,7 @@ const SearchSuggestion = ({ placeholder, suggestions }: Props) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const dispatch = useAppDispatch();
   const pickup = useAppSelector(selectBookingPickup);
+  const map = useMap();
 
   const closeSuggestions = () => {
     setShowSuggestions(false);
@@ -36,6 +39,8 @@ const SearchSuggestion = ({ placeholder, suggestions }: Props) => {
     closeSuggestions();
     dispatch(changePickup(name));
     dispatch(changePickupMarker(coordinate));
+    const mapPosition: LatLngExpression = [coordinate.lat, coordinate.lng];
+    map.flyTo(mapPosition).getZoom();
   };
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
