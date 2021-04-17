@@ -1,0 +1,22 @@
+.location {
+  display: flex;
+  padding: 1rem 2rem;
+  background-color: white;
+  width: 35rem;
+
+  & h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  & address {
+    font-style: normal;
+    color: grey;
+    font-size: 1rem;
+  }
+
+  & svg {
+    margin-right: 2rem;
+    font-size: 1.5rem;
+  }
+}

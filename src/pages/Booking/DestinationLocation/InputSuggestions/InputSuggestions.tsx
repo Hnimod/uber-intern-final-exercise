@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LatLngExpression } from 'leaflet';
 import { useMap } from 'react-leaflet';
+import { MdClose } from 'react-icons/md';
 import styles from './InputSuggestions.module.scss';
 
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
@@ -47,6 +48,11 @@ const SearchSuggestion = ({ placeholder, suggestions }: Props) => {
     dispatch(changeDestination(e.target.value));
   };
 
+  const clearSearch = () => {
+    dispatch(changeDestination(''));
+    dispatch(changeDestinationMarker(null));
+  };
+
   return (
     <div className={styles.container}>
       <input
@@ -68,6 +74,7 @@ const SearchSuggestion = ({ placeholder, suggestions }: Props) => {
           ))}
         </ul>
       )}
+      {!!destination && <MdClose onClick={clearSearch} />}
     </div>
   );
 };

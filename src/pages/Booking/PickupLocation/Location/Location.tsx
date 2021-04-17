@@ -6,6 +6,7 @@ import styles from './Location.module.scss';
 import {
   ICoordinate,
   changePickupMarker,
+  changePickup,
 } from '../../../../features/booking/bookingSlice';
 import { useAppDispatch } from '../../../../app/hooks';
 
@@ -21,6 +22,7 @@ const Location = ({ name, address, coordinate, current }: Props) => {
   const map = useMap();
 
   const onLocationClick = () => {
+    dispatch(changePickup(address));
     if (!current) {
       dispatch(changePickupMarker(coordinate));
       const mapPosition: LatLngExpression = [coordinate.lat, coordinate.lng];

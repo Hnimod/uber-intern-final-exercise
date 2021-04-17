@@ -10,7 +10,7 @@ import {
   changeStepToDestination,
 } from '../../../features/booking/bookingSlice';
 
-import { PrimaryButton, BackButton } from '../../../shared/Buttons';
+import { PrimaryButton } from '../../../shared/Buttons';
 import Location from './Location';
 import InputSuggestions, { ISuggestion } from './InputSuggestions';
 
@@ -57,12 +57,6 @@ const Booking = ({ className }: Props) => {
       </div>
       <ul className={styles.resultsList}>
         <Location
-          name="Current location"
-          address="Your current location"
-          current
-          coordinate={{ lng: 108.4375758, lat: 11.9402416 }}
-        />
-        <Location
           name="Hanoi"
           address="Hanoi, Vietnam"
           coordinate={{ lng: 105.8544441, lat: 21.0294498 }}
@@ -72,10 +66,22 @@ const Booking = ({ className }: Props) => {
           address="Ho Chi Minh City, Vietnam"
           coordinate={{ lng: 106.7017555, lat: 10.7758439 }}
         />
+        <Location
+          name="Current location"
+          address="Your current location"
+          current
+          coordinate={{ lng: 108.4375758, lat: 11.9402416 }}
+        />
       </ul>
       <div className={styles.buttons}>
-        <BackButton disabled>Back</BackButton>
-        <PrimaryButton onClick={() => dispatch(changeStepToDestination())}>
+        <PrimaryButton
+          onClick={() => {
+            if (pickup) {
+              dispatch(changeStepToDestination());
+            }
+          }}
+          disabled={!!!pickup}
+        >
           Next
         </PrimaryButton>
       </div>

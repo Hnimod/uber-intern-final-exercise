@@ -1,0 +1,36 @@
+.destinationsBox {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  color: rgb(75, 75, 75);
+  font-size: 1.2rem;
+
+  & > * {
+    margin: 1rem 0;
+  }
+}
+
+.buttons {
+  display: flex;
+  padding: 1rem 2rem;
+  background-color: white;
+
+  & > *:first-child {
+    margin-right: 1rem;
+  }
+}
+
+.price {
+  display: flex;
+  background-color: white;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+
+  .summary {
+    padding-left: 3.4rem;
+    margin-right: 6rem;
+  }
+
+  details {
+    cursor: pointer;
+  }
+}

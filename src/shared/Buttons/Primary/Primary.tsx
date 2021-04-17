@@ -3,16 +3,19 @@ import { HiOutlineArrowRight } from 'react-icons/hi';
 
 import styles from './Primary.module.scss';
 
-type Props = {
+interface Props {
   children: ReactNode;
   onClick?: () => void;
   className?: string;
-};
+  disabled?: boolean;
+}
 
-const PrimaryButton = ({ children, onClick, className }: Props) => {
+const PrimaryButton = ({ children, onClick, className, disabled }: Props) => {
   return (
     <button
-      className={styles.primaryButton + ' ' + className}
+      className={`${styles.primaryButton} ${className} ${
+        disabled ? styles.disabled : ''
+      }`}
       onClick={onClick}
     >
       {children}

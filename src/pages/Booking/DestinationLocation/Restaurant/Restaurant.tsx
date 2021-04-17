@@ -1,7 +1,6 @@
-import { IconType } from 'react-icons/lib';
-import { useMap } from 'react-leaflet';
 import { LatLngExpression } from 'leaflet';
-import styles from './Location.module.scss';
+import { useMap } from 'react-leaflet';
+import styles from './Restaurant.module.scss';
 
 import {
   ICoordinate,
@@ -11,13 +10,14 @@ import {
 import { useAppDispatch } from '../../../../app/hooks';
 
 interface Props {
-  Icon: IconType;
+  image: string;
   name: string;
-  coordinate: ICoordinate;
   address: string;
+  alt: string;
+  coordinate: ICoordinate;
 }
 
-const Location = ({ name, address, Icon, coordinate }: Props) => {
+const Restaurant = ({ image, name, address, alt, coordinate }: Props) => {
   const dispatch = useAppDispatch();
   const map = useMap();
   const onLocationClick = () => {
@@ -28,14 +28,13 @@ const Location = ({ name, address, Icon, coordinate }: Props) => {
   };
 
   return (
-    <li className={styles.location} onClick={onLocationClick}>
-      <Icon />
-      <div>
-        <h5>{name}</h5>
-        <address>{address}</address>
-      </div>
-    </li>
+    <figure className={styles.place} onClick={onLocationClick}>
+      <img src={image} alt={alt} />
+      <figcaption>
+        {name} <address>{address}</address>
+      </figcaption>
+    </figure>
   );
 };
 
-export default Location;
+export default Restaurant;

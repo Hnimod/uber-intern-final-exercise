@@ -1,0 +1,29 @@
+.friend {
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgb(187, 187, 187);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  width: 8rem;
+  height: 10rem;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(black, 0.1);
+  }
+
+  & img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8px;
+  }
+
+  & figcaption {
+    font-size: 1rem;
+  }
+
+  & address {
+    font-size: 0.8rem;
+  }
+}

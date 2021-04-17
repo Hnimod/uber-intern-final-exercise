@@ -9,15 +9,20 @@ import styles from './DestinationLocation.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
   changeStepToPickup,
+  changeStepToSummary,
   selectBookingDestination,
 } from '../../../features/booking/bookingSlice';
 
 import restaurant1 from '../../../images/restaurant-1.jpg';
 import restaurant2 from '../../../images/restaurant-2.jpg';
-import friend1 from '../../../images/Minh-Avatar.jpg';
+import friend1 from '../../../images/minh-avatar-square.png';
+import friend2 from '../../../images/friend-male.png';
+import friend3 from '../../../images/friend-female.png';
 import { BackButton, PrimaryButton } from '../../../shared/Buttons';
 import Location from './Location';
 import InputSuggestions, { ISuggestion } from './InputSuggestions';
+import Restaurant from './Restaurant';
+import Friend from './Friend';
 
 interface Props {
   className?: string;
@@ -65,61 +70,75 @@ const DestinationLocation = ({ className }: Props) => {
         <Location
           Icon={RiSuitcaseLine}
           name="Office"
-          address="BDlive24, Road 8 Niketon, gulshan, 1000"
+          address="Etown 3, Ap Bac, 13 ward, Tan Binh, HCMC"
+          coordinate={{ lng: 106.64135, lat: 10.80163 }}
         />
         <Location
           Icon={AiOutlineHome}
           name="Home"
-          address="BDlive24, Road 8 Niketon, gulshan, 1000"
+          address="180/48, XVNT, 21 ward, Binh Thanh, HCMC"
+          coordinate={{ lng: 106.71219, lat: 10.79766 }}
         />
       </ul>
 
       <h4>Nearby Restaurant</h4>
       <div className={styles.nearbyPlaces}>
-        <figure className={styles.place}>
-          <img src={restaurant1} alt="restaurant 1" />
-          <figcaption>
-            Grandiose Restaurant <address>Airport Road Khilkhet, 1229</address>
-          </figcaption>
-        </figure>
+        <Restaurant
+          name="Sorae Restaurant & Lounge"
+          image={restaurant1}
+          address="AB Tower, 76A Le Lai, HCMC"
+          alt="restaurant 1"
+          coordinate={{ lng: 106.69445, lat: 10.77069 }}
+        />
 
-        <figure className={styles.place}>
-          <img src={restaurant2} alt="restaurant 2" />
-          <figcaption>
-            Grandiose Restaurant <address>Airport Road Khilkhet, 1229</address>
-          </figcaption>
-        </figure>
+        <Restaurant
+          name="Moo Beef Steak Prime"
+          image={restaurant2}
+          address="36 Ngo Duc Ke, Ben Nghe, HCMC"
+          alt="restaurant 2"
+          coordinate={{ lng: 106.7056, lat: 10.77333 }}
+        />
       </div>
 
       <h4>Friends nearby you</h4>
       <ul className={styles.nearbyFriends}>
-        <figure className={styles.friend}>
-          <img src={friend1} alt="restaurant 2" />
-          <figcaption>
-            Minh Do <address>Etown 3</address>
-          </figcaption>
-        </figure>
-
-        <figure className={styles.friend}>
-          <img src={friend1} alt="restaurant 2" />
-          <figcaption>
-            Minh Do <address>Etown 3</address>
-          </figcaption>
-        </figure>
-
-        <figure className={styles.friend}>
-          <img src={friend1} alt="restaurant 2" />
-          <figcaption>
-            Minh Do <address>Etown 3</address>
-          </figcaption>
-        </figure>
+        <Friend
+          name="Minh Do"
+          image={friend1}
+          address="Etown 3"
+          alt="friend 1"
+          coordinate={{ lng: 106.64135, lat: 10.80163 }}
+        />
+        <Friend
+          name="Nam Vu"
+          image={friend2}
+          address="Phu My Hung"
+          alt="friend 2"
+          coordinate={{ lng: 106.7202, lat: 10.73071 }}
+        />
+        <Friend
+          name="Bao Anh"
+          image={friend3}
+          address="Tan Son Nhat"
+          alt="friend 3"
+          coordinate={{ lng: 106.65931, lat: 10.8183 }}
+        />
       </ul>
 
       <div className={styles.buttons}>
         <BackButton onClick={() => dispatch(changeStepToPickup())}>
           Back
         </BackButton>
-        <PrimaryButton onClick={() => {}}>Next</PrimaryButton>
+        <PrimaryButton
+          onClick={() => {
+            if (destination) {
+              dispatch(changeStepToSummary());
+            }
+          }}
+          disabled={!!!destination}
+        >
+          Next
+        </PrimaryButton>
       </div>
     </section>
   );

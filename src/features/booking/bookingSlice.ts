@@ -16,7 +16,7 @@ export interface ILocation {
 export enum BookingSteps {
   PickUp = 0,
   Destination = 1,
-  Summary = 1,
+  Summary = 2,
 }
 
 interface BookingState {
@@ -44,7 +44,7 @@ const bookingSlice = createSlice({
     changePickup: (state, action: PayloadAction<string>) => {
       state.pickup = action.payload;
     },
-    changePickupMarker: (state, action: PayloadAction<ICoordinate>) => {
+    changePickupMarker: (state, action: PayloadAction<ICoordinate | null>) => {
       state.pickupMarker = action.payload;
     },
     changeStepToDestination: (state) => {
@@ -53,10 +53,16 @@ const bookingSlice = createSlice({
     changeStepToPickup: (state) => {
       state.activeStep = BookingSteps.PickUp;
     },
+    changeStepToSummary: (state) => {
+      state.activeStep = BookingSteps.Summary;
+    },
     changeDestination: (state, action: PayloadAction<string>) => {
       state.destination = action.payload;
     },
-    changeDestinationMarker: (state, action: PayloadAction<ICoordinate>) => {
+    changeDestinationMarker: (
+      state,
+      action: PayloadAction<ICoordinate | null>
+    ) => {
       state.destinationMarker = action.payload;
     },
   },
@@ -67,6 +73,7 @@ export const {
   changePickupMarker,
   changeStepToDestination,
   changeStepToPickup,
+  changeStepToSummary,
   changeDestination,
   changeDestinationMarker,
 } = bookingSlice.actions;

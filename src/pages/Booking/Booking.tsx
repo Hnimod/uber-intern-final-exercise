@@ -14,6 +14,7 @@ import PickupLocation from './PickupLocation';
 import PickupMarker from './PickupMarker';
 import DestinationLocation from './DestinationLocation';
 import DestinationMarker from './DestinationMarker';
+import Summary from './Summary';
 
 const Booking = () => {
   const pickupMarker = useAppSelector(selectBookingPickupMarker);
@@ -27,7 +28,7 @@ const Booking = () => {
       case BookingSteps.Destination:
         return <DestinationLocation className={styles.locationForm} />;
       case BookingSteps.Summary:
-        return;
+        return <Summary className={styles.locationForm} />;
       default:
         throw new Error('Unhandle booking step');
     }
