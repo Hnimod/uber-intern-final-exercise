@@ -1,14 +1,22 @@
 .location {
   display: flex;
+  padding: 1rem 2rem;
+  width: 35rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(black, 0.2);
+  }
 
   & h5 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 0.8rem;
   }
 
   & address {
     font-style: normal;
     color: grey;
+    font-size: 1rem;
   }
 
   & svg {

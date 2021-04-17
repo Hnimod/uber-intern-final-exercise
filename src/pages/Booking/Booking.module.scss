@@ -1,0 +1,18 @@
+main {
+  height: 50rem;
+  max-width: 90rem;
+  margin: auto;
+  position: relative;
+}
+
+.mapContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.pickupForm {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 900;
+}

@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  width: 100%;
+
+  & input {
+    padding: 0 1rem;
+    width: 100%;
+    z-index: 900;
+  }
+
+  & ul {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-top: 1px solid black;
+    margin-top: 1rem;
+    background-color: white;
+    max-width: 100%;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+
+    & li {
+      padding: 1rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      list-style-position: inside;
+      cursor: pointer;
+      z-index: 901;
+
+      &:hover {
+        background: rgba(black, 0.2);
+      }
+    }
+  }
+}

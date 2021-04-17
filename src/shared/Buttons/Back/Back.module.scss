@@ -1,0 +1,34 @@
+.primaryButton {
+  padding: 1rem 2rem;
+  color: black;
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  font: inherit;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  @media screen and (max-width: 500px) {
+    font-size: 1.2rem;
+  }
+
+  @media screen and (max-width: 320px) {
+    font-size: 0.9rem;
+  }
+
+  & span {
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    background-color: rgb(104, 102, 102);
+  }
+}

@@ -6,10 +6,10 @@ import { RiSuitcaseLine } from 'react-icons/ri';
 import restaurant1 from '../../images/restaurant-1.jpg';
 import restaurant2 from '../../images/restaurant-2.jpg';
 
-import BackgroundImage from '../../layouts/BackgroundImage';
+import BackgroundImage from '../../../layouts/BackgroundImage';
 import Location from './Location';
 
-import styles from './SuggestLocation.module.scss';
+import styles from './DestinationLocation.module.scss';
 
 const Booking = () => {
   return (

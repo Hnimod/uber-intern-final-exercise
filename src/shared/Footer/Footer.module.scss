@@ -1,11 +1,11 @@
 footer {
-  border-top: 1px solid grey;
   justify-self: flex-end;
   color: grey;
   font-weight: 600;
 }
 
 .container {
+  border-top: 1px solid grey;
   max-width: 90rem;
   display: flex;
   flex-direction: column;
