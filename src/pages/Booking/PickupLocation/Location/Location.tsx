@@ -25,13 +25,11 @@ const Location = ({ name, address, coordinate, current }: Props) => {
     } else {
       map.locate();
       map.addEventListener('locationfound', (e) => {
-        map.flyTo(e.latlng);
         const newCoordinate: ICoordinate = {
           lat: e.latlng.lat,
           lng: e.latlng.lng,
         };
         dispatch(changePickupMarker(newCoordinate));
-        map.getZoom();
       });
       map.addEventListener('locationerror', () => {
         alert('Unable to find your location');

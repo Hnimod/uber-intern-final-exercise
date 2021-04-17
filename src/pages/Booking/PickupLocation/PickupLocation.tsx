@@ -4,8 +4,11 @@ import { IoIosSquare } from 'react-icons/io';
 import { FaSistrix } from 'react-icons/fa';
 import styles from './PickupLocation.module.scss';
 
-import { useAppSelector } from '../../../app/hooks';
-import { selectBookingPickup } from '../../../features/booking/bookingSlice';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import {
+  selectBookingPickup,
+  changeStepToDestination,
+} from '../../../features/booking/bookingSlice';
 
 import { PrimaryButton, BackButton } from '../../../shared/Buttons';
 import Location from './Location';
@@ -19,6 +22,7 @@ const Booking = ({ className }: Props) => {
   const [suggestData, setSuggestData] = useState<ISuggestion[]>([]);
   const provider = new OpenStreetMapProvider();
   const pickup = useAppSelector(selectBookingPickup);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const timer = setTimeout(async () => {
@@ -70,8 +74,10 @@ const Booking = ({ className }: Props) => {
         />
       </ul>
       <div className={styles.buttons}>
-        <BackButton>Back</BackButton>
-        <PrimaryButton>Confirm</PrimaryButton>
+        <BackButton disabled>Back</BackButton>
+        <PrimaryButton onClick={() => dispatch(changeStepToDestination())}>
+          Next
+        </PrimaryButton>
       </div>
     </section>
   );
