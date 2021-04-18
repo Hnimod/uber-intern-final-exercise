@@ -34,8 +34,15 @@ header {
 .menuButton {
   font-size: 2rem;
   cursor: pointer;
+
+  & svg {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 .sideMenu {
   position: relative;
+  display: flex;
+  align-items: center;
 }

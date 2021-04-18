@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
+import PrivateRoute from './shared/PrivateRoute';
 import Booking from './pages/Booking';
 import Commitment from './pages/Commitment';
 import Contact from './pages/Contact';
@@ -12,7 +13,8 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/booking" exact component={Booking} />
+        {/* <Route path="/booking" exact component={Booking} /> */}
+        <PrivateRoute path="/booking" exact component={Booking} />
         <Route path="/commitment" exact component={Commitment} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/guide" exact component={Guide} />

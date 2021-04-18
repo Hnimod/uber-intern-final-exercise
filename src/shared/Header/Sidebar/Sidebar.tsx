@@ -3,7 +3,31 @@ import { Link } from 'react-router-dom';
 
 import styles from './Sidebar.module.scss';
 
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { selectToken, signout } from '../../../features/auth/authSlice';
+
 const Sidebar = () => {
+  const auth = useAppSelector(selectToken);
+  const dispatch = useAppDispatch();
+
+  const privateLink = (
+    <>
+      <li>
+        <Link to="/booking">
+          <MdHome />
+          <span>Booking</span>
+        </Link>
+      </li>
+
+      <li>
+        <Link to="/" onClick={() => dispatch(signout())}>
+          <MdHome />
+          <span>Sign Out</span>
+        </Link>
+      </li>
+    </>
+  );
+
   return (
     <aside>
       <ul className={styles.container}>
@@ -31,12 +55,15 @@ const Sidebar = () => {
             <span>Commitment</span>
           </Link>
         </li>
-        <li>
-          <Link to="/registry">
-            <MdHome />
-            <span>Registry</span>
-          </Link>
-        </li>
+        {!!!auth && (
+          <li>
+            <Link to="/registry">
+              <MdHome />
+              <span>Registry</span>
+            </Link>
+          </li>
+        )}
+        {!!auth && privateLink}
       </ul>
     </aside>
   );

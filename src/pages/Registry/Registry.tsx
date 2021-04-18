@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { Formik, Form, FormikHelpers } from 'formik';
 
 import ConfirmCodeStep from './components/ConfirmCodeStep';
@@ -12,16 +12,20 @@ import styles from './Registry.module.scss';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
-  RegistryStep,
   selectRegistry,
+  RegistryStep,
   verifyPhoneNumber,
   verifyOTP,
+  resetFormStep,
 } from '../../features/registry/registrySlice';
+import { authSignup, selectToken } from '../../features/auth/authSlice';
 
 const Registry = () => {
   const registry = useAppSelector(selectRegistry);
+  const auth = useAppSelector(selectToken);
   const dispatch = useAppDispatch();
   const currentValidationSchema = validationSchema[registry.activeStep];
+  const history = useHistory();
 
   useEffect(() => {
     if (registry.error) {
@@ -32,6 +36,14 @@ const Registry = () => {
       alert('OTP accepted.');
     }
   }, [registry.error, registry.verify]);
+
+  useEffect(() => {
+    if (!!auth) {
+      dispatch(resetFormStep());
+      history.push('/booking');
+    }
+    // eslint-disable-next-line
+  }, [auth]);
 
   const initialValues: FormValues = {
     phoneNumber: '',
@@ -78,17 +90,13 @@ const Registry = () => {
     actions.setTouched({});
   };
 
-  const sleep = (ms: number) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
-
   const submitInfoStep = async (
     values: FormValues,
     actions: FormikHelpers<FormValues>
   ) => {
-    await sleep(1000);
-    alert(JSON.stringify(values, null, 2));
+    await dispatch(authSignup(values.fullName));
     actions.setSubmitting(false);
+    actions.setTouched({});
   };
 
   const handleSubmit = (
@@ -113,6 +121,7 @@ const Registry = () => {
   return (
     <BackgroundImage>
       <Formik
+        enableReinitialize
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={currentValidationSchema}

@@ -51,7 +51,14 @@ export const verifyOTP = createAsyncThunk(
 const registrySlice = createSlice({
   name: 'registry',
   initialState,
-  reducers: {},
+  reducers: {
+    resetFormStep: (state) => {
+      state.phoneNumber = '';
+      state.verify = false;
+      state.error = null;
+      state.activeStep = RegistryStep.PhoneNumber;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(verifyPhoneNumber.pending, (state) => {
@@ -76,6 +83,8 @@ const registrySlice = createSlice({
       });
   },
 });
+
+export const { resetFormStep } = registrySlice.actions;
 
 export const selectRegistry = (state: RootState) => state.registry;
 
