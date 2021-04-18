@@ -14,9 +14,10 @@ const {
 
 const registryFormValidation = [
   Yup.object().shape({
-    [phoneNumber.name]: Yup.string().required('Please enter your phone number'),
-    // .min(9, 'At least 9 digits')
-    // .max(10, 'Maximum 10 digits'),
+    [phoneNumber.name]: Yup.string()
+      .required('Please enter your phone number')
+      .min(9, 'At least 9 digits')
+      .max(10, 'Maximum 10 digits'),
     [agree.name]: Yup.boolean().oneOf([true]),
   }),
   Yup.object().shape({
