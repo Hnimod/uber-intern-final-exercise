@@ -65,6 +65,14 @@ const bookingSlice = createSlice({
     ) => {
       state.destinationMarker = action.payload;
     },
+    resetBooking: (state) => {
+      state.activeStep = BookingSteps.PickUp;
+      state.pickup = '';
+      state.pickupMarker = null;
+      state.pickupLocations = [];
+      state.destination = '';
+      state.destinationMarker = null;
+    },
   },
 });
 
@@ -76,6 +84,7 @@ export const {
   changeStepToSummary,
   changeDestination,
   changeDestinationMarker,
+  resetBooking,
 } = bookingSlice.actions;
 
 export const selectBookingStep = (state: RootState) => state.booking.activeStep;

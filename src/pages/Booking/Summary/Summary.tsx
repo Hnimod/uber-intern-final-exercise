@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom';
 import { MdLocationOn, MdMyLocation } from 'react-icons/md';
 import styles from './Summary.module.scss';
 
@@ -6,6 +7,7 @@ import {
   selectBookingPickup,
   selectBookingDestination,
   changeStepToDestination,
+  resetBooking,
 } from '../../../features/booking/bookingSlice';
 
 import Location from './Location';
@@ -19,6 +21,7 @@ const Summary = ({ className }: Props) => {
   const pickup = useAppSelector(selectBookingPickup);
   const destination = useAppSelector(selectBookingDestination);
   const dispatch = useAppDispatch();
+  const history = useHistory();
 
   return (
     <section className={`${styles.destinationsBox} ${className}`}>
@@ -37,7 +40,17 @@ const Summary = ({ className }: Props) => {
         <BackButton onClick={() => dispatch(changeStepToDestination())}>
           Back
         </BackButton>
-        <PrimaryButton onClick={() => {}}>Confirm</PrimaryButton>
+        <PrimaryButton
+          onClick={() => {
+            setTimeout(() => {
+              alert('Booking successfully');
+              dispatch(resetBooking());
+              history.push('/');
+            }, 500);
+          }}
+        >
+          Confirm
+        </PrimaryButton>
       </div>
     </section>
   );
