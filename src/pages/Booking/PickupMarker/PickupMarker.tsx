@@ -1,5 +1,5 @@
 import { LatLngExpression } from 'leaflet';
-import { Marker } from 'react-leaflet';
+import { Marker, Popup } from 'react-leaflet';
 import { ICoordinate } from '../../../features/booking/bookingSlice';
 
 interface Props {
@@ -9,7 +9,11 @@ interface Props {
 const PickupMarker = ({ position }: Props) => {
   const mapPosition: LatLngExpression = [position.lat, position.lng];
 
-  return <Marker position={mapPosition}>Your pick up</Marker>;
+  return (
+    <Marker position={mapPosition}>
+      <Popup>Your pick up</Popup>
+    </Marker>
+  );
 };
 
 export default PickupMarker;
