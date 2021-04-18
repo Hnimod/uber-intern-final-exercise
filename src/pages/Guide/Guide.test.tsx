@@ -1,9 +1,9 @@
 import renderer from 'react-test-renderer';
-import Commitment from './Commitment';
+import Guide from './Guide';
 
 jest.mock('../../layouts/BackgroundImage', () => 'BackgroundImage');
 
 it('should render commitment page correctly', () => {
-  const tree = renderer.create(<Commitment />).toJSON();
+  const tree = renderer.create(<Guide />).toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -1,0 +1,21 @@
+.preview {
+  height: 7rem;
+  width: 7rem;
+  border: 1px solid #cbd4db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  object-fit: cover;
+
+  .previewImg {
+    height: 100%;
+  }
+
+  .defaultImg {
+    height: 3rem;
+    width: 3rem;
+  }
+}

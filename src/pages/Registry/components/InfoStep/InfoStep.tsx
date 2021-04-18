@@ -2,6 +2,7 @@ import { useField } from 'formik';
 
 import { FormModel } from '../../models/registryFormModel';
 import { FormButton } from '../../../../shared/Buttons';
+import ImageUpload from '../../../../shared/ImageUpload';
 import CameraIcon from '../../../../images/compact-camera.png';
 import MaleIcon from '../../../../images/male-icon.png';
 import FemaleIcon from '../../../../images/female-icon.png';
@@ -68,11 +69,10 @@ const Info = ({ formModel }: Props) => {
       </div>
 
       <div className={styles.upload}>
-        <div className={styles.imagePreview}>
-          <img src={CameraIcon} alt="camera icon" />
-        </div>
+        <ImageUpload onImageChange={() => {}} defaultImage={CameraIcon} />
         <p>Upload profile picture</p>
       </div>
+
       <div className={styles.button}>
         <FormButton />
       </div>
