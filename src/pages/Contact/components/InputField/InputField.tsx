@@ -12,7 +12,7 @@ interface Props {
 
 const InputField = ({ name, label, placeholder }: Props) => {
   return (
-    <Field name={name}>
+    <Field name={name} data-testid="contactFormInput">
       {({ field, meta }: FieldProps) => {
         const error = meta.touched && !!meta.error;
         const errorStyle = error ? styles.error : '';
@@ -20,11 +20,18 @@ const InputField = ({ name, label, placeholder }: Props) => {
           <section className={styles.nameInput}>
             <div className={`${styles.input} ${errorStyle}`}>
               <label htmlFor={name}>{label}</label>
-              <input {...field} id={name} placeholder={placeholder} />
+              <input
+                {...field}
+                id={name}
+                placeholder={placeholder}
+                data-testid="contactInput"
+              />
             </div>
             <ErrorMessage
               name={name}
-              render={(message) => <ErrorText message={message} />}
+              render={(message) => (
+                <ErrorText message={message} testId="contactInputError" />
+              )}
             />
           </section>
         );

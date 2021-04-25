@@ -25,11 +25,14 @@ const TextareaField = ({ name, label, placeholder }: Props) => {
                 rows={4}
                 id={name}
                 placeholder={placeholder}
+                data-testid="contactTextarea"
               />
             </div>
             <ErrorMessage
               name={name}
-              render={(message) => <ErrorText message={message} />}
+              render={(message) => (
+                <ErrorText message={message} testId="contactTextareaError" />
+              )}
             />
           </section>
         );

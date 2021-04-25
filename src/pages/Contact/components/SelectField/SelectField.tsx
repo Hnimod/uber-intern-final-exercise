@@ -21,9 +21,13 @@ const SelectField = ({ name, label, options }: Props) => {
           <section className={styles.typeSelect}>
             <div className={`${styles.select} ${errorStyle}`}>
               <label htmlFor={name}>{label}</label>
-              <select {...field} id={name}>
+              <select {...field} id={name} data-testid="contactSelect">
                 {options.map((option) => (
-                  <option key={option} value={option}>
+                  <option
+                    key={option}
+                    value={option}
+                    data-testid={`option-${option}`}
+                  >
                     {option.charAt(0).toUpperCase() + option.slice(1)}
                   </option>
                 ))}
@@ -31,7 +35,9 @@ const SelectField = ({ name, label, options }: Props) => {
             </div>
             <ErrorMessage
               name={name}
-              render={(message) => <ErrorText message={message} />}
+              render={(message) => (
+                <ErrorText message={message} testId="contactSelectError" />
+              )}
             />
           </section>
         );

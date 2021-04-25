@@ -15,7 +15,11 @@ import ContactFormValidation from './models/validationShema';
 
 import styles from './Contact.module.scss';
 
-const Contact = () => {
+interface Props {
+  onSubmitForm?: (values: IContact) => void;
+}
+
+const Contact = ({ onSubmitForm }: Props) => {
   const initialValues: IContact = {
     name: '',
     type: UserType.select,
@@ -32,6 +36,7 @@ const Contact = () => {
           values: IContact,
           { setSubmitting }: FormikHelpers<IContact>
         ) => {
+          onSubmitForm?.(values);
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);

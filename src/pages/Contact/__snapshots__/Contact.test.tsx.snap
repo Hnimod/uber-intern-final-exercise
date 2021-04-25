@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`match snapshot 1`] = `
+<BackgroundImage>
+  <form
+    action="#"
+    className="form"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="title"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 512 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M464 80H48a16 16 0 00-16 16v320a16 16 0 0016 16h416a16 16 0 0016-16V96a16 16 0 00-16-16zM265.82 284.63a16 16 0 01-19.64 0L89.55 162.81l19.64-25.26L256 251.73l146.81-114.18 19.64 25.26z"
+        />
+      </svg>
+      <h1>
+        Contact us
+      </h1>
+    </div>
+    <div
+      className="detail"
+    >
+      <div
+        className="info"
+      >
+        <section
+          className="nameInput"
+        >
+          <div
+            className="input "
+          >
+            <label
+              htmlFor="name"
+            >
+              Your name:
+            </label>
+            <input
+              data-testid="contactInput"
+              id="name"
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter your name"
+              value=""
+            />
+          </div>
+        </section>
+        <section
+          className="typeSelect"
+        >
+          <div
+            className="select "
+          >
+            <label
+              htmlFor="type"
+            >
+              Select:
+            </label>
+            <select
+              data-testid="contactSelect"
+              id="type"
+              name="type"
+              onBlur={[Function]}
+              onChange={[Function]}
+              value="select"
+            >
+              <option
+                data-testid="option-select"
+                value="select"
+              >
+                Select
+              </option>
+              <option
+                data-testid="option-rider"
+                value="rider"
+              >
+                Rider
+              </option>
+              <option
+                data-testid="option-driver"
+                value="driver"
+              >
+                Driver
+              </option>
+            </select>
+          </div>
+        </section>
+      </div>
+      <div
+        className="message"
+      >
+        <section
+          className="messageArea"
+        >
+          <div
+            className="textarea "
+          >
+            <label
+              htmlFor="message"
+            >
+              Message:
+            </label>
+            <textarea
+              data-testid="contactTextarea"
+              id="message"
+              name="message"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter your message"
+              rows={4}
+              value=""
+            />
+          </div>
+        </section>
+      </div>
+    </div>
+    <div
+      className="button"
+    >
+      <button
+        className="formButton undefined"
+        disabled={true}
+        type="submit"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14 5l7 7m0 0l-7 7m7-7H3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+          />
+        </svg>
+      </button>
+    </div>
+  </form>
+</BackgroundImage>
+`;
